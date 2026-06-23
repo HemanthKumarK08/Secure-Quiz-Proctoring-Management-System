@@ -1,0 +1,32 @@
+=== RAW TEXT ===
+Question: What does DBMS stand for?A) Database Management SystemB) Data Backup Management SystemC) Digital Base Management ServiceD) Database Monitoring ServiceAnswer: A
+
+Question: Which of the following is a type of database model?A) Relational ModelB) Network Cable ModelC) Processor ModelD) Memory ModelAnswer: A
+
+Question: Which SQL command is used to retrieve data from a database?A) SELECTB) INSERTC) UPDATED) DELETEAnswer: A
+
+Question: What is a primary key in a database?A) A field that uniquely identifies each recordB) A field that stores duplicate valuesC) A field used for formatting dataD) A field that contains only null valuesAnswer: A
+
+Question: Which of the following is a DBMS software?A) MySQLB) JavaC) LinuxD) ChromeAnswer: A
+
+
+
+
+=== END RAW TEXT ===
+=== LINES ARRAY ===
+[
+  "Question: What does DBMS stand for?A) Database Management SystemB) Data Backup Management SystemC) Digital Base Management ServiceD) Database Monitoring ServiceAnswer: A",
+  "",
+  "Question: Which of the following is a type of database model?A) Relational ModelB) Network Cable ModelC) Processor ModelD) Memory ModelAnswer: A",
+  "",
+  "Question: Which SQL command is used to retrieve data from a database?A) SELECTB) INSERTC) UPDATED) DELETEAnswer: A",
+  "",
+  "Question: What is a primary key in a database?A) A field that uniquely identifies each recordB) A field that stores duplicate valuesC) A field used for formatting dataD) A field that contains only null valuesAnswer: A",
+  "",
+  "Question: Which of the following is a DBMS software?A) MySQLB) JavaC) LinuxD) ChromeAnswer: A",
+  "",
+  "",
+  "",
+  ""
+]
+=== END LINES ARRAY ===

@@ -1,0 +1,25 @@
+{
+  "name": "online-exam-proctoring",
+  "version": "1.0.0",
+  "description": "Online MCQ exam system with proctoring (tab switch detection, fullscreen, violations) using Node.js, Express, MySQL, JWT, bcrypt, HTML, CSS, JS, Bootstrap, Chart.js.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "docx": "^9.7.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mammoth": "^1.12.0",
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
