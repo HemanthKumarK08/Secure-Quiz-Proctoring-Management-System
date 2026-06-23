@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #f4f6fb;
+      --bg-dark: #121212;
+      --card-light: #ffffff;
+      --card-dark: #1f1f1f;
+      --text-light: #000;
+      --text-dark: #f5f5f5;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      min-height: 100vh;
+      transition: 0.3s;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, #4e73df, #1cc88a);
+    }
+
+    /* Cards */
+    .card-custom {
+      background: var(--card-light);
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      border: none;
+    }
+
+    body.dark .card-custom {
+      background: var(--card-dark);
+      color: var(--text-dark);
+    }
+
+    .card-custom:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    /* Tables */
+    .table thead {
+      background: #4e73df;
+      color: #fff;
+    }
+
+    body.dark .table {
+      color: var(--text-dark);
+    }
+
+    .table tbody tr:hover {
+      background: rgba(78,115,223,0.1);
+      transition: 0.2s;
+    }
+
+    /* Buttons */
+    .btn-start {
+      background: linear-gradient(135deg, #4e73df, #1cc88a);
+      border: none;
+      color: #fff;
+    }
+
+    /* Progress bar */
+    .progress {
+      height: 8px;
+      border-radius: 10px;
+    }
+
+    .progress-bar {
+      background: linear-gradient(135deg, #4e73df, #1cc88a);
+    }
+
+    /* Dark toggle */
+    .dark-toggle {
+      cursor: pointer;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+    /* =========================
+   DARK MODE (FULL FIX)
+========================= */
+
+body.dark-mode {
+  background: #0f1115;
+  color: #e5e7eb;
+}
+
+/* Navbar */
+body.dark-mode .navbar {
+  background: linear-gradient(135deg, #1f2933, #111827);
+}
+
+/* Cards */
+body.dark-mode .card,
+body.dark-mode .card-custom {
+  background: #111827;
+  color: #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* Tables */
+body.dark-mode .table {
+  color: #e5e7eb;
+}
+
+body.dark-mode .table thead {
+  background: #1f2933;
+  color: #fff;
+}
+
+body.dark-mode .table tbody tr {
+  background: #111827;
+}
+
+body.dark-mode .table tbody tr:hover {
+  background: #1f2933;
+}
+
+/* Inputs & Select */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background: #0f172a;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+}
+
+body.dark-mode .form-control::placeholder {
+  color: #9ca3af;
+}
+
+/* Progress bar background */
+body.dark-mode .progress {
+  background: #1f2933;
+}
+
+/* Badges */
+body.dark-mode .badge {
+  box-shadow: none;
+}
+
+/* Buttons */
+body.dark-mode .btn {
+  box-shadow: none;
+}
+
+/* Toast */
+body.dark-mode .toast {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+  </style>
+</head>
+
+<!-- <body class="dark-mode"> -->
+<body>
+<!-- NAVBAR -->
+<nav class="navbar px-4 py-3 d-flex justify-content-between align-items-center">
+  <span class="navbar-brand text-white fw-bold">
+    <i class="bi bi-mortarboard-fill"></i> Student Dashboard
+  </span>
+
+  <div class="d-flex align-items-center gap-3">
+    <!-- <i class="bi bi-moon-fill dark-toggle" id="darkToggle"></i> -->
+       <button class="btn btn-light btn-sm me-2" onclick="toggleDarkMode()">
+  🌙
+</button>
+    <button class="btn btn-outline-light btn-sm" id="logoutBtn">
+      <i class="bi bi-box-arrow-right"></i> Logout
+    </button>
+  </div>
+
+
+</nav>
+
+<div class="container py-4">
+
+  <!-- SUMMARY CARDS -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <div class="card card-custom p-3 text-center">
+        <h6><i class="bi bi-list-task"></i> Total Attempts</h6>
+        <h2 id="totalAttempts">0</h2>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card card-custom p-3 text-center">
+        <h6><i class="bi bi-check-circle-fill"></i> Completed</h6>
+        <h2 id="completedAttempts">0</h2>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card card-custom p-3 text-center">
+        <h6><i class="bi bi-exclamation-triangle-fill"></i> Auto Submitted</h6>
+        <h2 id="autoSubmittedAttempts">0</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVAILABLE QUIZZES -->
+  <div class="card card-custom p-4 mb-4">
+    <h4><i class="bi bi-journal-text"></i> Available Quizzes</h4>
+    <div class="table-responsive">
+      <table class="table align-middle" id="quizTable">
+        <thead>
+          <tr>
+            <th>Quiz</th>
+            <th>Duration</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PREVIOUS ATTEMPTS -->
+  <div class="card card-custom p-4">
+    <h4><i class="bi bi-bar-chart-fill"></i> Previous Attempts</h4>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <input id="searchInput" class="form-control" placeholder="🔍 Search quiz name">
+      </div>
+      <div class="col-md-4">
+        <select id="statusFilter" class="form-select">
+          <option value="all">All Status</option>
+          <option value="submitted">Submitted</option>
+          <option value="auto_submitted">Auto Submitted</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table align-middle" id="attemptTable">
+        <thead>
+          <tr>
+            <th>Quiz</th>
+            <th>Score</th>
+            <th>Status</th>
+            <th>Time Taken</th>
+            <th>Progress</th>
+            <th>Start</th>
+            <th>End</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast text-bg-success">
+    <div class="toast-body">
+      ✅ Action completed successfully
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- DARK MODE + TOAST SCRIPT -->
+<script>
+  const body = document.body;
+  const toggle = document.getElementById("darkToggle");
+
+  if (localStorage.getItem("darkMode") === "on") {
+    body.classList.add("dark");
+  }
+
+  toggle.onclick = () => {
+    body.classList.toggle("dark");
+    localStorage.setItem("darkMode", body.classList.contains("dark") ? "on" : "off");
+
+    const toast = new bootstrap.Toast(document.getElementById("toast"));
+    document.querySelector(".toast-body").innerText =
+      body.classList.contains("dark")
+      ? "🌙 Dark Mode Enabled"
+      : "☀️ Light Mode Enabled";
+    toast.show();
+  };
+</script>
+
+<!-- YOUR EXISTING JS -->
+<script src="js/student-dashboard.js"></script>
+
+</body>
+</html>
